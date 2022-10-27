@@ -1,0 +1,29 @@
+.table {
+}
+
+.numberTableRow {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2px;
+}
+
+.numberBox {
+    width: 8vw;
+    border: 1px black solid;
+    background-color: transparent;
+}
+
+.deleteButton, .deleteFavButton {
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+.chosenColor {
+    width: 20px;
+    border-radius: 30px;
+    position: relative;
+    transform: translate(-50%, -50%);
+    margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+}
