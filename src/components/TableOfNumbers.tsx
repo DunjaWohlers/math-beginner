@@ -10,7 +10,14 @@ type TableOfNumbersProps = {
 }
 
 export default function TableOfNumbers(props: TableOfNumbersProps) {
-    let [lovedColors, setLovedColors] = useState<string[]>([allColors[0], allColors[3]]);
+
+    useEffect(() => {
+            loadColors();
+            loadItems();
+        }
+        , [])
+
+    let [lovedColors, setLovedColors] = useState<string[]>([]);
 
     const numberArray = () => {
 
@@ -41,6 +48,7 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
         const newArray: NumberType[][] = allItems;
         newArray[row][cell].color = color;
         setAllItems(newArray);
+        saveItems();
     }
 
     const deleteAllColors = () => {
@@ -54,13 +62,41 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
 
     const addLovedColor = (color: string) => {
         setLovedColors([...lovedColors, color]);
+        saveColors([...lovedColors, color]);
     }
 
     const deleteLovedColor = () => {
         setLovedColors([]);
+        saveColors([]);
     }
 
-    const [mouseState, setMouseSate] = useState<MouseEvent>();
+    const localKey = "data";
+    const localColor = "color";
+
+    const saveItems = () => {
+        const valueAsString: string = JSON.stringify(allItems);
+        localStorage.setItem(localKey, valueAsString);
+    }
+
+    const saveColors = (colorArray: string[]) => {
+        const colorString: string = JSON.stringify(colorArray)
+        localStorage.setItem(localColor, colorString)
+    }
+
+    const loadItems = () => {
+        const valueString: string | null = localStorage.getItem(localKey);
+        const value = valueString ? JSON.parse(valueString) : "";
+        setAllItems(value);
+    }
+
+    const loadColors = () => {
+        const colorString: string | null = localStorage.getItem(localColor);
+        console.log(colorString);
+        const colorValue = colorString ? JSON.parse(colorString) : [allColors[0], allColors[3]];
+        console.log(colorValue);
+        setLovedColors(colorValue);
+    }
+
     return (
         <div className={"table"}>
             Farben zur Palette hinzufügen:

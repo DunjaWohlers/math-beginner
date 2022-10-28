@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import TableOfNumbers from './components/TableOfNumbers';
-import ColorPicker from "./components/ColorPicker";
 
 function App() {
 
@@ -11,7 +9,6 @@ function App() {
       <TableOfNumbers
           maximum={100}
       />
-
     </div>
   );
 }
