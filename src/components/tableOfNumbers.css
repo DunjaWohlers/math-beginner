@@ -10,11 +10,11 @@
 }
 
 .numberBox {
-    width: 50px;
+    width: 8vw;
     border: 1px black solid;
     background-color: transparent;
-    height: 50px;
-    border-radius:25px;
+    height: 8vw;
+    border-radius:8vw;
     margin:4px;
     font-size: inherit;
 }
