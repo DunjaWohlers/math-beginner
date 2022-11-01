@@ -118,8 +118,7 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
             }}>&nbsp;</div>
 
             {allItems
-                .map((row, r) => {
-                    return <div
+                .map((row, r) => <div
                         key={crypto.randomUUID()}
                         className={"numberTableRow"}
                     > {row.map((numberItem, c) =>
@@ -132,7 +131,7 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
                             setColor={setColor}
                         />
                     )} </div>
-                })
+                )
             }
             <button
                 className={"deleteButton"}
