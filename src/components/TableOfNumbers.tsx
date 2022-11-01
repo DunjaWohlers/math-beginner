@@ -40,6 +40,7 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
         });
         return ar;
     }
+    const [showColor, setShowColor] = useState<boolean>(false)
 
     const [chosenColor, setChosenColor] = useState<string>("");
     const [allItems, setAllItems] = useState<NumberType[][]>(numberArray());
@@ -60,9 +61,10 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
         setAllItems(newArray);
     }
 
-    const addLovedColor = (color: string) => {
+    const addMyColor = (color: string) => {
         setMyColors([...myColors, color]);
         saveColors([...myColors, color]);
+        setShowColor(false);
     }
 
     const deleteLovedColor = () => {
@@ -99,16 +101,23 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
 
     return (
         <div className={"table"}>
-            Farben zur Palette hinzufügen:
-            <ColorPicker
-                setActualColor={addLovedColor}
-                colors={allColors}
-            />
+            {showColor &&
+                <div className={"colorPickerContainer"}>
+                    <ColorPicker
+                        setActualColor={addMyColor}
+                        colors={allColors}
+                    />
+                </div>
+            }
 
             Palette:
             <div style={{display: "flex"}}>
-                <ColorPicker setActualColor={setChosenColor}
-                             colors={myColors}/>
+                <div className={"colorPickerContainer"}>
+                    <ColorPicker setActualColor={setChosenColor}
+                                 colors={myColors}
+                    />
+                </div>
+                <button onClick={() => setShowColor(true)}> +</button>
             </div>
             <button className={"deleteFavButton"} onClick={deleteLovedColor}> Palette löschen</button>
 

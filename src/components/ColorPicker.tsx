@@ -2,8 +2,8 @@ import "./colorPicker.css";
 
 export default function ColorPicker(
     props: {
-        setActualColor: (color: string) => void ,
-        colors: string[];
+        setActualColor: (color: string) => void,
+        colors: string[],
     }) {
 
     const handleClick = (col: string) => {
@@ -11,7 +11,7 @@ export default function ColorPicker(
     }
 
     return (
-        <div className={"colorPickerContainer"}>
+        <>
             {props.colors.map(color =>
                 <button
                     onClick={() => handleClick(color)}
@@ -20,6 +20,6 @@ export default function ColorPicker(
                     key={color}>
                     &nbsp;
                 </button>)}
-        </div>
+        </>
     )
 }
