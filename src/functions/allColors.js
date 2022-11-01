@@ -19,7 +19,7 @@ const grey = "9B9B9A";
 const lightblack = "3F3F37";
 const white="FFFFFF"
 
-export const allColors:string[] = [
+export const allColors = [
     red,
     lightRed,
     orange0,
@@ -33,4 +33,11 @@ export const allColors:string[] = [
     lila,
     purple,
     purpleLight,
-    pink, darkRed, brown, brownYellow, grey, lightblack,white];
+    pink,
+    darkRed,
+    brown,
+    brownYellow,
+    grey,
+    lightblack,
+    white
+];
