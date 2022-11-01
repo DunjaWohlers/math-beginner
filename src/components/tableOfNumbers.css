@@ -15,8 +15,9 @@
     background-color: transparent;
     height: 8vw;
     border-radius:8vw;
-    margin:4px;
+    margin:1vw;
     font-size: inherit;
+    padding:0;
 }
 
 .chosenColor {
@@ -44,4 +45,22 @@
 
 .buttonRowBottom > button {
     margin: 0 auto 0 auto;
+}
+
+@media screen and (max-width: 500px){
+    .numberTableRow{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .numberTableRow{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 300px){
+    .numberTableRow{
+        font-size: 8px;
+    }
 }
