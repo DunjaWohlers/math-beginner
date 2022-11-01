@@ -14,10 +14,11 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
     useEffect(() => {
             loadColors();
             loadItems();
+            saveItems(); //Sicherheits-Save, damit localstorage nicht leer ist
         }
         , [])
 
-    let [lovedColors, setLovedColors] = useState<string[]>([]);
+    let [myColors, setMyColors] = useState<string[]>([]);
 
     const numberArray = () => {
 
@@ -41,7 +42,7 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
         return ar;
     }
 
-    const [actualColor, setActualColor] = useState<string>("");
+    const [chosenColor, setChosenColor] = useState<string>("");
     const [allItems, setAllItems] = useState<NumberType[][]>(numberArray());
 
     const setColor = (row: number, cell: number, color: string) => {
@@ -61,12 +62,12 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
     }
 
     const addLovedColor = (color: string) => {
-        setLovedColors([...lovedColors, color]);
-        saveColors([...lovedColors, color]);
+        setMyColors([...myColors, color]);
+        saveColors([...myColors, color]);
     }
 
     const deleteLovedColor = () => {
-        setLovedColors([]);
+        setMyColors([]);
         saveColors([]);
     }
 
@@ -85,16 +86,15 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
 
     const loadItems = () => {
         const valueString: string | null = localStorage.getItem(localKey);
-        const value = valueString ? JSON.parse(valueString) : "";
+        console.log(valueString)
+        const value = valueString ? JSON.parse(valueString) : allItems;
         setAllItems(value);
     }
 
     const loadColors = () => {
         const colorString: string | null = localStorage.getItem(localColor);
-        console.log(colorString);
         const colorValue = colorString ? JSON.parse(colorString) : [allColors[0], allColors[3]];
-        console.log(colorValue);
-        setLovedColors(colorValue);
+        setMyColors(colorValue);
     }
 
     return (
@@ -107,14 +107,14 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
 
             Palette:
             <div style={{display: "flex"}}>
-                <ColorPicker setActualColor={setActualColor}
-                             colors={lovedColors}/>
+                <ColorPicker setActualColor={setChosenColor}
+                             colors={myColors}/>
             </div>
             <button className={"deleteFavButton"} onClick={deleteLovedColor}> Palette löschen</button>
 
 
             <div className={"chosenColor"} style={{
-                backgroundColor: "#" + actualColor,
+                backgroundColor: "#" + chosenColor,
             }}>&nbsp;</div>
 
             {allItems
@@ -127,7 +127,7 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
                             cellIndex={c}
                             numberItem={numberItem}
                             key={numberItem.number}
-                            actualColor={actualColor}
+                            actualColor={chosenColor}
                             setColor={setColor}
                         />
                     )} </div>
