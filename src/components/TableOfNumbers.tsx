@@ -110,16 +110,17 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
                 </div>
             }
 
-            Palette:
-            <div style={{display: "flex"}}>
-                <div className={"colorPickerContainer"}>
-                    <ColorPicker setActualColor={setChosenColor}
-                                 colors={myColors}
-                    />
-                </div>
-                <button onClick={() => setShowColor(true)}> +</button>
+            Palette: <div>
+            <div className={"colorPicker"}>
+                <ColorPicker setActualColor={setChosenColor}
+                             colors={myColors}
+                />
             </div>
-            <button className={"deleteFavButton"} onClick={deleteLovedColor}> Palette löschen</button>
+        </div>
+            <div className={"buttonRow"}>
+                <button onClick={deleteLovedColor}> Palette löschen</button>
+                <button onClick={() => setShowColor(true)}> Farbe hinzufügen</button>
+            </div>
 
 
             <div className={"chosenColor"} style={{
@@ -142,11 +143,13 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
                     )} </div>
                 )
             }
-            <button
-                className={"deleteButton"}
-                onClick={deleteAllColors}
-            > Alle Hintergrundfarben entfernen
-            </button>
+            <div className={"buttonRowBottom"}>
+                <button
+                    className={"deleteButton"}
+                    onClick={deleteAllColors}
+                > Alle Hintergrundfarben entfernen
+                </button>
+            </div>
         </div>
     )
 }
