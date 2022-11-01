@@ -14,7 +14,6 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
     useEffect(() => {
             loadColors();
             loadItems();
-            saveItems(); //Sicherheits-Save, damit localstorage nicht leer ist
         }
         , [])
 
@@ -94,6 +93,7 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
     const loadColors = () => {
         const colorString: string | null = localStorage.getItem(localColor);
         const colorValue = colorString ? JSON.parse(colorString) : [allColors[0], allColors[3]];
+        console.log(colorValue);
         setMyColors(colorValue);
     }
 
