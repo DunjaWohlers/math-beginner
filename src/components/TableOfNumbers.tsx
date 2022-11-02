@@ -2,8 +2,8 @@ import {useEffect, useState} from 'react';
 import {NumberType} from '../type/NumberType';
 import ColorPicker from './ColorPicker';
 import './tableOfNumbers.css';
-import TableOfNumbersSingleBox from './TableOfNumbersSingleBox';
 import {allColors} from "../functions/allColors";
+import Table from "./Table";
 
 type TableOfNumbersProps = {
     maximum: number,
@@ -17,7 +17,8 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
         }
         , [])
 
-    let [myColors, setMyColors] = useState<string[]>([]);
+    const [myColors, setMyColors] = useState<string[]>([]);
+    const [format, setFormat] = useState<boolean>(false);
 
     const numberArray = () => {
 
@@ -87,7 +88,6 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
 
     const loadItems = () => {
         const valueString: string | null = localStorage.getItem(localKey);
-        console.log(valueString)
         const value = valueString ? JSON.parse(valueString) : allItems;
         setAllItems(value);
     }
@@ -95,12 +95,18 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
     const loadColors = () => {
         const colorString: string | null = localStorage.getItem(localColor);
         const colorValue = colorString ? JSON.parse(colorString) : [allColors[0], allColors[3]];
-        console.log(colorValue);
         setMyColors(colorValue);
     }
 
+    const handleFormatChange = () => {
+        format ? setFormat(false) : setFormat(true);
+    }
+
     return (
-        <div className={"table"}>
+        <>
+            <button className={"noprint"}
+                    onClick={handleFormatChange}>Format ändern
+            </button>
             {showColor &&
                 <div className={"colorPickerContainer"}>
                     <ColorPicker
@@ -111,38 +117,27 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
             }
 
             <div>
-            <div className={"colorPicker noprint"}>
-                <ColorPicker setActualColor={setChosenColor}
-                             colors={myColors}
-                />
+                <div className={"colorPicker noprint"}>
+                    <ColorPicker setActualColor={setChosenColor}
+                                 colors={myColors}
+                    />
+                </div>
             </div>
-        </div>
             <div className={"buttonRow noprint"}>
                 <button onClick={deleteLovedColor}> Palette löschen</button>
                 <button onClick={() => setShowColor(true)}> Farbe hinzufügen</button>
             </div>
-
-
             <div className={"chosenColor noprint"} style={{
                 backgroundColor: "#" + chosenColor,
-            }}>&nbsp;</div>
+            }}>
+                &nbsp;
+            </div>
+            <Table allItems={allItems}
+                   chosenColor={chosenColor}
+                   setColor={setColor}
+                   format={format}
+            />
 
-            {allItems
-                .map((row, r) => <div
-                        key={crypto.randomUUID()}
-                        className={"numberTableRow"}
-                    > {row.map((numberItem, c) =>
-                        <TableOfNumbersSingleBox
-                            rowIndex={r}
-                            cellIndex={c}
-                            numberItem={numberItem}
-                            key={numberItem.number}
-                            actualColor={chosenColor}
-                            setColor={setColor}
-                        />
-                    )} </div>
-                )
-            }
             <div className={"buttonRowBottom noprint"}>
                 <button
                     className={"deleteButton"}
@@ -150,6 +145,6 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
                 > Alle Hintergrundfarben entfernen
                 </button>
             </div>
-        </div>
+        </>
     )
 }

@@ -14,16 +14,32 @@
         align-items: center;
     }
 
+    .numberTableRow2 {
+        font-size: 38px !important;
+        justify-content: center !important;
+        margin-bottom: 20px!important;
+    }
+
+    .numberBox2 {
+        width: 70px !important;
+        height: 70px !important;
+        margin: 0 !important;
+        padding: 0;
+    }
+
+
     .numberTableRow {
-        font-size: 38px!important;
-        justify-content: center!important;
+        font-size: 36px !important;
+        justify-content: center !important;
+        width: 45vw;
+        height: 144px !important;
+        margin-bottom:25px!important;
     }
 
     .numberBox {
-        width: 70px!important;
-        height:70px!important;
-        margin: 0!important;
-        padding:0;
+        margin: 0vw !important;
+        height: 65px !important;
+        width: 65px !important;
+        padding: 0;
     }
-
 }
