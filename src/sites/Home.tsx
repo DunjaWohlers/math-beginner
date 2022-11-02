@@ -23,12 +23,15 @@ export default function Home() {
 
     return (
         <>
-            <button className={"noprint"}
-                    onClick={handleFormatChange}>Format ändern
-            </button>
-            <button className={"noprint"}
-                    onClick={rowCountdown}>Anzahl reduzieren
-            </button>
+            <div className={"buttonRow menu"}>
+                <button className={"noprint"}
+                        onClick={handleFormatChange}>Format ändern
+                </button>
+                <button className={"noprint"}
+                        onClick={rowCountdown}>Anzahl reduzieren
+                </button>
+            </div>
+
 
             <ColorPicker chosenColor={chosenColor} setChosenColor={setChosenColor}/>
 

@@ -1,3 +1,10 @@
+.menu.buttonRow{
+    background-color: rgba(169, 185, 249, 0.62);
+    color:white;
+    width: 100%;
+    margin:0;
+}
+
 .numberTableRow2 {
     display: flex;
     justify-content: center;
@@ -58,10 +65,12 @@
 
 .buttonRow > button, .buttonRowBottom > button {
     width: 50%;
-    background-color: #ebebeb;
-    border: none;
-    border-radius: 0;
-    padding: 0;
+    background-color: transparent;
+    border-radius: 3px;
+    padding: 5px;
+    border:none;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.29);
+    margin:5px;
 }
 
 .buttonRowBottom > button {
