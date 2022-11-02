@@ -15,17 +15,17 @@ export default function Table(props: TableProps) {
             {props.allItems
                 .map((row, r) => <div
                         key={crypto.randomUUID()}
-                        className={props.format?"numberTableRow":"numberTableRow2"}
+                        className={props.format ? "numberTableRow" : "numberTableRow2"}
                     > {row.map((numberItem, c) =>
-                            <SingleTableItem
-                                rowIndex={r}
-                                cellIndex={c}
-                                numberItem={numberItem}
-                                key={numberItem.number}
-                                actualColor={props.chosenColor}
-                                setColor={props.setColor}
-                                cellClassName={props.format?"numberBox":"numberBox2"}
-                            />
+                        <SingleTableItem
+                            rowIndex={r}
+                            cellIndex={c}
+                            numberItem={numberItem}
+                            key={numberItem.number}
+                            actualColor={props.chosenColor}
+                            setColor={props.setColor}
+                            cellClassName={props.format ? "numberBox" : "numberBox2"}
+                        />
                     )} </div>
                 )
             }

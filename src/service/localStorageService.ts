@@ -14,9 +14,9 @@ export const saveColors = (colorArray: string[]) => {
     localStorage.setItem(localColor, colorString)
 }
 
-export const loadItems = (allItems: NumberType[][]) => {
+export const loadItems = () => {
     const valueString: string | null = localStorage.getItem(localKey);
-    return valueString ? JSON.parse(valueString) : allItems;
+    return valueString ? JSON.parse(valueString) : undefined;
 }
 
 export const loadColors = () => {
@@ -24,13 +24,14 @@ export const loadColors = () => {
     return colorString ? JSON.parse(colorString) : [allColors[0], allColors[3]];
 }
 
-export const getActualRows = () => {
+export const getActualRows: () => number = () => {
     const valueString: string | null = localStorage.getItem(localKey);
-    if(valueString){
-        return JSON.parse(valueString).lenght;
-    }else{
-        return 10;
+    if (valueString !== null) {
+        let allItemArray = JSON.parse(valueString)
+        console.log("returned: ", allItemArray.length)
+        return allItemArray.length;
     }
+    return 10;
 }
 
 
