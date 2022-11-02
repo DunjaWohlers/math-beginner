@@ -19,7 +19,6 @@
 
 .colorPicker {
     width: 95vw;
-    height: 45px;
     display: flex;
     flex-wrap: wrap;
     margin: 10px auto 0 auto;
@@ -31,7 +30,7 @@
 
 .colorPicker > button {
     width: 50%;
-    height: 50px;
+    height: 51px;
     margin: 0;
     padding: 0;
     border:none;
