@@ -1,6 +1,6 @@
 .numberTableRow2 {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-bottom: 0;
 }
 
@@ -25,7 +25,7 @@
     background-color: transparent;
     height: 8vw;
     border-radius: 8vw;
-    margin: 1vw;
+    margin: 1vw 0 1vw 0;
     font-size: inherit;
     padding: 0;
 }
@@ -33,7 +33,7 @@
 .numberBox {
     border: 1px black solid;
     background-color: transparent;
-    margin: 0.5vw;
+    margin: 0;
     height: 8vw;
     width: 8vw;
     border-radius: 8vw;
