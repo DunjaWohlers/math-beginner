@@ -1,28 +1,49 @@
-.numberTableRow {
+.numberTableRow2 {
     display: flex;
     justify-content: space-around;
     margin-bottom: 0;
-    font-size: 28px;
+}
+
+.numberTableRow {
+    display: inline-flex;
+    width: 48vw;
+    height: 18vw;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
 }
 
 .numberTableRow:nth-child(13) {
     margin-bottom: 10px;
 }
 
-.numberBox {
+.numberBox2 {
     width: 8vw;
     border: 1px black solid;
     background-color: transparent;
     height: 8vw;
-    border-radius:8vw;
-    margin:1vw;
+    border-radius: 8vw;
+    margin: 1vw;
     font-size: inherit;
-    padding:0;
+    padding: 0;
+}
+
+.numberBox {
+    border: 1px black solid;
+    background-color: transparent;
+    margin: 0.5vw;
+    height: 8vw;
+    width: 8vw;
+    border-radius: 8vw;
+    font-size: inherit;
+    padding: 0;
 }
 
 .chosenColor {
     width: 50px;
-    height:50px;
+    height: 50px;
     border-radius: 30px;
     margin-top: 10px;
     margin-left: auto;
@@ -47,20 +68,26 @@
     margin: 0 auto 0 auto;
 }
 
-@media screen and (max-width: 500px){
-    .numberTableRow{
+@media screen and (max-width: 4500px) {
+    .numberTableRow, .numberTableRow2 {
+        font-size: 48px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .numberTableRow, .numberTableRow2 {
         font-size: 18px;
     }
 }
 
-@media screen and (max-width: 400px){
-    .numberTableRow{
+@media screen and (max-width: 400px) {
+    .numberTableRow, .numberTableRow2 {
         font-size: 12px;
     }
 }
 
-@media screen and (max-width: 300px){
-    .numberTableRow{
+@media screen and (max-width: 300px) {
+    .numberTableRow, .numberTableRow2 {
         font-size: 8px;
     }
 }
