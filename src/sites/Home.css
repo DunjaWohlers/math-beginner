@@ -1,8 +1,18 @@
-.menu.buttonRow{
-    background-color: rgba(169, 185, 249, 0.62);
-    color:white;
+.menu.buttonRow {
+    color: white;
     width: 100%;
-    margin:0;
+    margin: 0;
+    background-color: #eff0ff;
+    height:50px;
+}
+
+.menu.buttonRow > button {
+    border-radius: 0;
+    color: #748ad8;
+    width: 100%;
+    margin: 0;
+    box-shadow: none;
+    border-left: 1px black solid;
 }
 
 .numberTableRow2 {
@@ -68,9 +78,9 @@
     background-color: transparent;
     border-radius: 3px;
     padding: 5px;
-    border:none;
+    border: none;
     box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.29);
-    margin:5px;
+    margin: 5px;
 }
 
 .buttonRowBottom > button {
