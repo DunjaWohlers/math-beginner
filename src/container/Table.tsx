@@ -1,4 +1,4 @@
-import TableOfNumbersSingleBox from "./TableOfNumbersSingleBox";
+import SingleTableItem from "../components/SingleTableItem";
 import {NumberType} from "../type/NumberType";
 
 type TableProps = {
@@ -17,7 +17,7 @@ export default function Table(props: TableProps) {
                         key={crypto.randomUUID()}
                         className={props.format?"numberTableRow":"numberTableRow2"}
                     > {row.map((numberItem, c) =>
-                            <TableOfNumbersSingleBox
+                            <SingleTableItem
                                 rowIndex={r}
                                 cellIndex={c}
                                 numberItem={numberItem}

@@ -1,6 +1,6 @@
-import "./colorPicker.css";
+import "../container/colorPicker.css";
 
-export default function ColorPicker(
+export default function ColorPickerItem(
     props: {
         setActualColor: (color: string) => void,
         colors: string[],

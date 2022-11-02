@@ -10,11 +10,11 @@ type TableOfNumbersSingleBoxProps = {
     cellClassName: string,
 }
 
-export default function TableOfNumbersSingleBox(props: TableOfNumbersSingleBoxProps) {
+export default function SingleTableItem(props: TableOfNumbersSingleBoxProps) {
 
     const [color, setColor] = useState<string>(props.numberItem.color)
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const handleClick = () => {
         setColor(props.actualColor);
         props.setColor(props.rowIndex, props.cellIndex, props.actualColor);
     }
