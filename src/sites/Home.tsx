@@ -23,7 +23,7 @@ export default function Home() {
 
     return (
         <>
-            <div className={"buttonRow menu"}>
+            <div className={"buttonRow menu noprint"}>
                 <button className={"noprint"}
                         onClick={handleFormatChange}>Format ändern
                 </button>
