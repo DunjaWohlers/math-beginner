@@ -1,16 +1,13 @@
-import React from 'react';
 import './App.css';
-import TableOfNumbers from './components/TableOfNumbers';
+import TableOfNumbers from './sites/TableOfNumbers';
 
 function App() {
-
     return (
-    <div className="App">
-      <TableOfNumbers
-          maximum={100}
-      />
-    </div>
-  );
+        <div className="App">
+            <TableOfNumbers
+            />
+        </div>
+    );
 }
 
 export default App;

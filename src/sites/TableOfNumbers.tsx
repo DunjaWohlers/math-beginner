@@ -1,28 +1,15 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {NumberType} from '../type/NumberType';
-import ColorPicker from './ColorPicker';
-import './tableOfNumbers.css';
+import ColorPicker from '../components/ColorPicker';
+import '../components/tableOfNumbers.css';
 import {allColors} from "../functions/allColors";
-import Table from "./Table";
+import Table from "../components/Table";
 
-type TableOfNumbersProps = {
-    maximum: number,
-}
-
-export default function TableOfNumbers(props: TableOfNumbersProps) {
-
-    useEffect(() => {
-            loadColors();
-            loadItems();
-        }
-        , [])
-
-    const [myColors, setMyColors] = useState<string[]>([]);
-    const [format, setFormat] = useState<boolean>(false);
-
+export default function TableOfNumbers() {
+    const [maxNumber, setMaxNumber] = useState<number>(100)
     const numberArray = () => {
 
-        let numberOfRows = props.maximum / 10;
+        let numberOfRows = maxNumber / 10;
         let ar: NumberType[][] = new Array(numberOfRows).fill([]);
 
         let rowStart = 0;
@@ -30,8 +17,8 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
 
         ar = ar.map((row, r) => {
             let rowArray = [];
-            rowStart = (props.maximum / numberOfRows) * (r);
-            rowEnd = (props.maximum / numberOfRows) * (r + 1);
+            rowStart = (maxNumber / numberOfRows) * (r);
+            rowEnd = (maxNumber / numberOfRows) * (r + 1);
             for (let i = rowStart; i < rowEnd; i++) {
                 rowArray.push(
                     {number: i + 1, color: ""}
@@ -41,16 +28,33 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
         });
         return ar;
     }
+
+    const [allItems, setAllItems] = useState<NumberType[][]>(numberArray());
+
+    const loadItems = () => {
+        const valueString: string | null = localStorage.getItem(localKey);
+        const value = valueString ? JSON.parse(valueString) : allItems;
+        setAllItems(value);
+    }
+
+    useEffect(() => {
+            loadColors();
+            loadItems();
+        }
+        , [maxNumber])
+
+    const [myColors, setMyColors] = useState<string[]>([]);
+    const [format, setFormat] = useState<boolean>(false);
+
     const [showColor, setShowColor] = useState<boolean>(false)
 
     const [chosenColor, setChosenColor] = useState<string>("");
-    const [allItems, setAllItems] = useState<NumberType[][]>(numberArray());
 
     const setColor = (row: number, cell: number, color: string) => {
         const newArray: NumberType[][] = allItems;
         newArray[row][cell].color = color;
         setAllItems(newArray);
-        saveItems();
+        saveItems(allItems);
     }
 
     const deleteAllColors = () => {
@@ -76,8 +80,8 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
     const localKey = "data";
     const localColor = "color";
 
-    const saveItems = () => {
-        const valueAsString: string = JSON.stringify(allItems);
+    const saveItems = (items: NumberType[][]) => {
+        const valueAsString: string = JSON.stringify(items);
         localStorage.setItem(localKey, valueAsString);
     }
 
@@ -86,11 +90,7 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
         localStorage.setItem(localColor, colorString)
     }
 
-    const loadItems = () => {
-        const valueString: string | null = localStorage.getItem(localKey);
-        const value = valueString ? JSON.parse(valueString) : allItems;
-        setAllItems(value);
-    }
+
 
     const loadColors = () => {
         const colorString: string | null = localStorage.getItem(localColor);
@@ -102,11 +102,25 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
         format ? setFormat(false) : setFormat(true);
     }
 
+    const changeMaxNumber = () => {
+        if (maxNumber > 10) {
+            setMaxNumber(maxNumber - 10);
+        }else if(maxNumber<=10){
+            setMaxNumber(100);
+        }
+        setAllItems(numberArray());
+        saveItems(numberArray());
+    }
+
     return (
         <>
             <button className={"noprint"}
                     onClick={handleFormatChange}>Format ändern
             </button>
+            <button className={"noprint"}
+                    onClick={changeMaxNumber}>Anzahl reduzieren
+            </button>
+
             {showColor &&
                 <div className={"colorPickerContainer"}>
                     <ColorPicker
