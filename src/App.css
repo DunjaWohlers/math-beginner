@@ -1,9 +1,29 @@
 .App {
     text-align: center;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
+@media print {
+    .noprint {
+        display: none !important;
+    }
 
+    .App {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .numberTableRow {
+        font-size: 38px!important;
+        justify-content: center!important;
+    }
+
+    .numberBox {
+        width: 70px!important;
+        height:70px!important;
+        margin: 0!important;
+        padding:0;
+    }
+
+}

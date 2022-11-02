@@ -110,20 +110,20 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
                 </div>
             }
 
-            Palette: <div>
-            <div className={"colorPicker"}>
+            <div>
+            <div className={"colorPicker noprint"}>
                 <ColorPicker setActualColor={setChosenColor}
                              colors={myColors}
                 />
             </div>
         </div>
-            <div className={"buttonRow"}>
+            <div className={"buttonRow noprint"}>
                 <button onClick={deleteLovedColor}> Palette löschen</button>
                 <button onClick={() => setShowColor(true)}> Farbe hinzufügen</button>
             </div>
 
 
-            <div className={"chosenColor"} style={{
+            <div className={"chosenColor noprint"} style={{
                 backgroundColor: "#" + chosenColor,
             }}>&nbsp;</div>
 
@@ -143,7 +143,7 @@ export default function TableOfNumbers(props: TableOfNumbersProps) {
                     )} </div>
                 )
             }
-            <div className={"buttonRowBottom"}>
+            <div className={"buttonRowBottom noprint"}>
                 <button
                     className={"deleteButton"}
                     onClick={deleteAllColors}
