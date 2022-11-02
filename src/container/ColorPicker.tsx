@@ -1,7 +1,7 @@
 import ColorPickerItem from "../components/ColorPickerItem";
 import {allColors} from "../staticfunctions/allColors";
-import {addMyColor, deleteMyColors, myColors} from "../service/colorPaletteService";
 import React, {useState} from "react";
+import ColorPaletteService from "../service/ColorPaletteService";
 
 export default function ColorPicker(
     props:{
@@ -10,6 +10,7 @@ export default function ColorPicker(
     }
 ){
     const [showColor, setShowColor] = useState<boolean>(false)
+    const {myColors, addMyColor, deleteMyColors} = ColorPaletteService();
     const addToActualColors = (col:string) => {
         addMyColor(col)
         setShowColor(false);

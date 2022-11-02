@@ -32,7 +32,6 @@ export default function Home() {
                 </button>
             </div>
 
-
             <ColorPicker chosenColor={chosenColor} setChosenColor={setChosenColor}/>
 
             <Table allItems={allItems}
