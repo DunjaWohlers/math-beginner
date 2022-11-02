@@ -12,7 +12,7 @@
     align-content: center;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
 }
 
 .numberTableRow:nth-child(13) {
@@ -20,10 +20,10 @@
 }
 
 .numberBox2 {
-    width: 8vw;
+    width: 9vw;
     border: 1px black solid;
     background-color: transparent;
-    height: 8vw;
+    height: 9vw;
     border-radius: 8vw;
     margin: 1vw 0 1vw 0;
     font-size: inherit;
@@ -34,8 +34,8 @@
     border: 1px black solid;
     background-color: transparent;
     margin: 0;
-    height: 8vw;
-    width: 8vw;
+    height: 9vw;
+    width: 9vw;
     border-radius: 8vw;
     font-size: inherit;
     padding: 0;
