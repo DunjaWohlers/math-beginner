@@ -22,7 +22,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 10px auto 0 auto;
-    border: 2px black solid;
+    box-shadow: 0 0 4px 4px #5b5b5b;
     border-radius: 55px;
     overflow: hidden;
     padding:0;

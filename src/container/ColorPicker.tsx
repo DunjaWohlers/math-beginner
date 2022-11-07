@@ -18,6 +18,10 @@ export default function ColorPicker(
 
     return(
         <>
+            <div className={"buttonRow noprint"}>
+                <button onClick={deleteMyColors}> Palette löschen</button>
+                <button onClick={() => setShowColor(true)}> Farbe hinzufügen</button>
+            </div>
             {showColor &&
                 <div className={"colorPickerContainer"}>
                     <ColorPickerItem
@@ -33,10 +37,7 @@ export default function ColorPicker(
                     />
                 </div>
             </div>
-            <div className={"buttonRow noprint"}>
-                <button onClick={deleteMyColors}> Palette löschen</button>
-                <button onClick={() => setShowColor(true)}> Farbe hinzufügen</button>
-            </div>
+
             <div className={"chosenColor noprint"} style={{
                 backgroundColor: "#" + props.chosenColor,
             }}>

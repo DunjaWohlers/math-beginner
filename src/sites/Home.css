@@ -3,33 +3,53 @@
     width: 100%;
     margin: 0;
     background-color: #eff0ff;
-    height:50px;
+    height: 100px;
 }
 
 .menu.buttonRow > button {
     border-radius: 0;
     color: #748ad8;
-    width: 100%;
-    margin: 0;
+    width: 95%;
     box-shadow: none;
-    border-left: 1px black solid;
+    font-size: 28px;
+    text-shadow: 1px 1px darkblue;
+    margin: 5px;
+    background-color: #dbe3ff;
+}
+
+.table {
 }
 
 .numberTableRow2 {
     display: flex;
     justify-content: center;
     margin-bottom: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .numberTableRow {
     display: inline-flex;
-    width: 48vw;
+    width: 47vw;
     height: 18vw;
+    max-height: 115px;
     justify-content: center;
+
     align-content: center;
     flex-direction: column;
     flex-wrap: wrap;
     margin-bottom: 10px;
+}
+
+.numberTableRow:nth-child(2n) {
+    align-content: flex-start;
+    padding-left: 15px;
+}
+
+.numberTableRow:nth-child(2n-1) {
+    align-content: flex-end;
+    padding-right: 15px;
 }
 
 .numberTableRow:nth-child(13) {
@@ -38,24 +58,31 @@
 
 .numberBox2 {
     width: 9vw;
-    border: 1px black solid;
-    background-color: transparent;
     height: 9vw;
+    max-width: 55px;
+    max-height: 55px;
+    border: 1px black solid;
+    box-shadow: 0 0 3px 1px black;
+    background-color: transparent;
     border-radius: 8vw;
-    margin: 1vw 0 1vw 0;
+    margin: 5px 1px 5px 1px;
     font-size: inherit;
     padding: 0;
+    text-shadow: 1px 1px #696969;
 }
 
 .numberBox {
-    border: 1px black solid;
+    box-shadow: 0 0 2px 1px black;
+    margin:1px;
     background-color: transparent;
-    margin: 0;
-    height: 9vw;
-    width: 9vw;
+    height: 6vw;
+    max-height: 55px;
+    width: 6vw;
+    max-width: 55px;
     border-radius: 8vw;
     font-size: inherit;
     padding: 0;
+    text-shadow: 1px 1px #696969;
 }
 
 .chosenColor {
@@ -88,12 +115,6 @@
 }
 
 @media screen and (max-width: 4500px) {
-    .numberTableRow, .numberTableRow2 {
-        font-size: 48px;
-    }
-}
-
-@media screen and (max-width: 800px) {
     .numberTableRow, .numberTableRow2 {
         font-size: 18px;
     }
